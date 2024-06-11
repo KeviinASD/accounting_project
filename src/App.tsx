@@ -1,6 +1,7 @@
 import { Route, Routes, Link } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import InventarioPeps from './pages/InventarioPeps/InventarioPeps'
+import Promedio from './pages/Promedio/Promedio'
 
 function App() {
 
@@ -15,11 +16,15 @@ function App() {
           <li>
             <Link to="/inventario-peps">Inventario Peps</Link>
           </li>
+          <li>
+            <Link to="/inventario-promedio">Inventario Promedio</Link>
+          </li>
         </ul>
       </nav> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/inventario-peps" element={<InventarioPeps/>} />
+        <Route path="/inventario-promedio" element={<Promedio/>} />
       </Routes>
     </>
   )
