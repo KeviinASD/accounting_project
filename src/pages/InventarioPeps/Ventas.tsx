@@ -34,13 +34,7 @@ function Ventas({ sellItem, sales }: Props): JSX.Element {
           Vender
         </button>
       </form>
-      <ul>
-        {sales.map((sale, index) => (
-          <li key={index}>
-            {sale.quantity} unidades vendidas por un total de ${sale.totalCost}
-          </li>
-        ))}
-      </ul>
+
     </div>
   );
 }
