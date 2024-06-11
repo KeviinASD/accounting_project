@@ -15,8 +15,6 @@ interface Sale {
   totalCost: number;
 }
 
-type DataRow = Item | Sale;
-
 function VistaOperaciones(): JSX.Element {
   const [inventory, setInventory] = useState<Item[]>([]);
   const [sales, setSales] = useState<Sale[]>([]);
@@ -72,6 +70,14 @@ function VistaOperaciones(): JSX.Element {
   const totalCompras: number = purchases.reduce((acc, item) => acc + item.total, 0);
   const totalInventario: number = inventory.reduce((acc, item) => acc + item.total, 0);
   const totalVentas: number = sales.reduce((acc, item) => acc + item.totalCost, 0);
+  let saldoInicial: number;
+  
+  purchases.length > 0 ? (
+    saldoInicial = purchases[0].total
+  ) : (
+    saldoInicial = 0
+  )
+  const costoVentas: number = saldoInicial + totalCompras - totalInventario;
 
   return (
     <div className="lg:h-4/5 flex lg:flex-row flex-col items-center gap-20 p-20">
@@ -92,11 +98,9 @@ function VistaOperaciones(): JSX.Element {
           {selectedOperation === 'opcion2' && <Ventas sellItem={sellItem} sales={sales} />}
         </div>
         <div>
-          {purchases.length > 0 ? (
-            <p>Saldo inicial: {purchases[0].total}</p>
-          ) : (
-            <p>Saldo inicial: 0</p>
-          )}
+          <p>Saldo inicial: {saldoInicial}</p>
+          <p>Costo de venta: {costoVentas}</p>
+          
         </div>
       </div>
 
