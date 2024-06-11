@@ -15,6 +15,8 @@ interface Sale {
   totalCost: number;
 }
 
+type DataRow = Item | Sale;
+
 function VistaOperaciones(): JSX.Element {
   const [inventory, setInventory] = useState<Item[]>([]);
   const [sales, setSales] = useState<Sale[]>([]);
